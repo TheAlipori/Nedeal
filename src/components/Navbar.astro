@@ -1,0 +1,151 @@
+---
+import icon from "/nedeal-icon.svg";
+---
+
+<nav class="bg-white shadow-sm">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex h-20 items-center justify-between">
+      <!-- Logo -->
+      <div class="flex-shrink-0">
+        <a href="nedealicon.svg">
+          <img
+            class="h-12 w-auto"
+            src="/nedealicon.svg"
+            alt="Nedeal - Cuidado Infantil"
+          />
+        </a>
+      </div>
+
+      <!-- Menú Desktop (oculto en mobile) -->
+      <div class="hidden md:flex md:items-center md:space-x-8">
+        <a
+          href="/servicios"
+          class="text-primary hover:text-quaternary font-medium transition-colors"
+        >
+          Servicios
+        </a>
+        <a
+          href="/sobre-nosotros"
+          class="text-gray-600 hover:text-quaternary font-medium transition-colors"
+        >
+          Sobre Nosotros
+        </a>
+        <a
+          href="/guarderias"
+          class="text-gray-600 hover:text-quaternary font-medium transition-colors"
+        >
+          Guarderías
+        </a>
+        <a
+          href="/contacto"
+          class="text-gray-600 hover:text-quaternary font-medium transition-colors"
+        >
+          Contacto
+        </a>
+        <a
+          href="/reservas"
+          class="cursor-pointer transition-all bg-primary text-white px-6 py-2 rounded-3xl
+border-quaternary
+border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px]
+active:border-b-[2px] active:brightness-90 active:translate-y-[2px]"
+        >
+          Reserva una Cita
+        </a>
+      </div>
+
+      <!-- Botón Mobile -->
+      <div class="md:hidden">
+        <button
+          type="button"
+          class="inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:bg-gray-100 hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-500"
+          aria-controls="mobile-menu"
+          aria-expanded="false"
+          id="mobile-menu-button"
+        >
+          <span class="sr-only">Abrir menú principal</span>
+          <!-- Icono Hamburguesa -->
+          <svg
+            class="block h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Menú Mobile -->
+  <div class="md:hidden hidden" id="mobile-menu">
+    <div class="px-2 pt-2 pb-3 space-y-1">
+      <a
+        href="/servicios"
+        class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50"
+      >
+        Servicios
+      </a>
+      <a
+        href="/sobre-nosotros"
+        class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50"
+      >
+        Sobre Nosotros
+      </a>
+      <a
+        href="/guarderias"
+        class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50"
+      >
+        Guarderías
+      </a>
+      <a
+        href="/contacto"
+        class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50"
+      >
+        Contacto
+      </a>
+      <a
+        href="/reservas"
+        class="block w-full px-4 py-2 text-center text-white bg-primary hover:bg-quaternary rounded-lg transition-colors"
+      >
+        Reserva una Cita
+      </a>
+    </div>
+  </div>
+</nav>
+
+<script is:inline>
+  // Script para manejar el menú móvil
+  const mobileMenuButton = document.getElementById("mobile-menu-button");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  mobileMenuButton.addEventListener("click", () => {
+    const isExpanded =
+      mobileMenuButton.getAttribute("aria-expanded") === "true";
+    mobileMenuButton.setAttribute("aria-expanded", !isExpanded);
+    mobileMenu.classList.toggle("hidden");
+  });
+
+  // Cerrar menú al hacer click fuera
+  document.addEventListener("click", (e) => {
+    if (
+      !mobileMenu.contains(e.target) &&
+      !mobileMenuButton.contains(e.target)
+    ) {
+      mobileMenu.classList.add("hidden");
+      mobileMenuButton.setAttribute("aria-expanded", "false");
+    }
+  });
+
+  // Cerrar menú con ESC
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      mobileMenu.classList.add("hidden");
+      mobileMenuButton.setAttribute("aria-expanded", "false");
+    }
+  });
+</script>
